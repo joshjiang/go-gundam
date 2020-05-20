@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil" // This is required to draw debug texts.
 	"log"
 	"math/rand"
+	"time"
 )
 
 // Goal #1: move square around on screen with keyboard
@@ -54,15 +56,14 @@ func movePlayer() {
 	if ebiten.IsKeyPressed(ebiten.KeyRight){
 		playerOne.xPos += playerOne.speed
 	}
-}
 
-func grabBomb(){
-	if abs(playerOne.yPos - bombOne.yPos) >= 10 && abs(playerOne.xPos - bombOne.xPos) >= 10{
+	if abs(playerOne.yPos - bombOne.yPos) <= 20 && abs(playerOne.xPos - bombOne.xPos) <= 20{
 		bombOne.isPickedUp = true
-		for {
-			bombOne.xPos, bombOne.yPos = playerOne.xPos, playerOne.yPos + 20
-		}
+
+		bombOne.xPos, bombOne.yPos = playerOne.xPos, playerOne.yPos
 	}
+
+
 }
 
 // Run this code once at startup
@@ -83,12 +84,14 @@ func init() {
 	}
 
 	playerOne = player{gundam, screenWidth/2.0, screenHeight/2.0, 4}
+
+	rand.Seed(time.Now().UnixNano())
 	bombOne = bomb{napalm, rand.Float64()*screenWidth,rand.Float64()*screenHeight, false}
+	fmt.Println(rand.Float64()*screenWidth, rand.Float64()*screenHeight )
 }
 
 func update(screen *ebiten.Image) error{
 	movePlayer()
-	grabBomb()
 
 	if ebiten.IsDrawingSkipped() {
 		return nil
