@@ -51,3 +51,5 @@ func (p *Player) Draw() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	playerOp.GeoM.Translate(p.GetPos())
 	return p.GetImage(), playerOp
 }
+
+

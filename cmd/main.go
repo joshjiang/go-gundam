@@ -4,8 +4,8 @@ import (
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 	"github.com/joshjiang/go-gundam/cmd/game"
-	"github.com/joshjiang/go-gundam/cmd/pieces/bomb"
-	"github.com/joshjiang/go-gundam/cmd/player"
+	"github.com/joshjiang/go-gundam/cmd/piece/bomb"
+	"github.com/joshjiang/go-gundam/cmd/piece/player"
 	"log"
 )
 
