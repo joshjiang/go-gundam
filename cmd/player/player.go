@@ -22,7 +22,7 @@ func New(spriteImage *ebiten.Image, xpos, ypos, speed float64) *Player {
 }
 
 // Move ...
-func (p *Player) Move(x1, x2, y1, y2 float64) {
+func (p *Player) Move() {
 	if ebiten.IsKeyPressed(ebiten.KeyUp) {
 		p.yPos -= p.speed
 	}
@@ -35,10 +35,13 @@ func (p *Player) Move(x1, x2, y1, y2 float64) {
 	if ebiten.IsKeyPressed(ebiten.KeyRight) {
 		p.xPos += p.speed
 	}
-
-	// if abs(p.yPos - bombOne.yPos) <= 20 && abs(p.xPos - bombOne.xPos) <= 20{
-	// 	bombOne.isPickedUp = true
-
-	// 	bombOne.xPos, bombOne.yPos = p.xPos, p.yPos
-	// }
 }
+
+func (p *Player) GetPos() (float64 ,float64){
+	return p.xPos, p.yPos
+}
+
+func (p *Player) GetImage() *ebiten.Image {
+	return p.image
+}
+
