@@ -37,7 +37,7 @@ func (p *Player) Move() {
 	}
 }
 
-func (p *Player) GetPos() (float64 ,float64){
+func (p *Player) GetPos() (float64, float64) {
 	return p.xPos, p.yPos
 }
 
@@ -45,3 +45,9 @@ func (p *Player) GetImage() *ebiten.Image {
 	return p.image
 }
 
+func (p *Player) Draw() (*ebiten.Image, *ebiten.DrawImageOptions) {
+	playerOp := &ebiten.DrawImageOptions{}
+	playerOp.GeoM.Scale(2.0, 2.0)
+	playerOp.GeoM.Translate(p.GetPos())
+	return p.GetImage(), playerOp
+}
