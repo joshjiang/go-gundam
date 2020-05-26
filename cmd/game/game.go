@@ -17,7 +17,7 @@ type Board struct {
 	width, height   int
 }
 
-func New(players []*player.Player, bombs []*bomb.Bomb, villages []*village.Village) *Board {
+func New(players []*player.Player, bombs []*bomb.Bomb) *Board {
 	var err error
 
 	background, _, err := ebitenutil.NewImageFromFile("../assets/korea.png", ebiten.FilterDefault)
@@ -28,7 +28,7 @@ func New(players []*player.Player, bombs []*bomb.Bomb, villages []*village.Villa
 	return &Board{
 		Players:         players,
 		Bombs:           bombs,
-		Villages:		 villages,
+		//Villages:		 villages,
 		backgroundImage: background,
 	}
 }
@@ -44,7 +44,7 @@ func (b *Board) Update(screen *ebiten.Image) error {
 	screen.DrawImage(b.backgroundImage, op)
 	screen.DrawImage(b.Bombs[0].Draw())
 	screen.DrawImage(b.Players[0].Draw())
-	screen.DrawImage(b.Villages[0].Draw())
+	//screen.DrawImage(b.Villages[0].Draw())
 	b.Players[0].Move()
 
 	return nil

@@ -47,7 +47,7 @@ func (p *Player) GetImage() *ebiten.Image {
 
 func (p *Player) Draw() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	playerOp := &ebiten.DrawImageOptions{}
-	playerOp.GeoM.Scale(2.0, 2.0)
+	playerOp.GeoM.Scale(4.0, 4.0)
 	playerOp.GeoM.Translate(p.GetPos())
 	return p.GetImage(), playerOp
 }
