@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/hajimehoshi/ebiten"
-	"github.com/hajimehoshi/ebiten/ebitenutil"
 	"github.com/joshjiang/go-gundam/cmd/game"
 	"github.com/joshjiang/go-gundam/cmd/piece/bomb"
 	"github.com/joshjiang/go-gundam/cmd/piece/player"
+	"github.com/joshjiang/go-gundam/cmd/piece/village"
 	"log"
 )
 
@@ -15,28 +15,22 @@ const (
 
 var (
 	background *ebiten.Image
-	gundam     *ebiten.Image
 	napalm     *ebiten.Image
 	players    []*player.Player
 	bombs      []*bomb.Bomb
+	villages   []*village.Village
 )
 
 func main() {
-	var err error
-	gundam, _, err = ebitenutil.NewImageFromFile("../assets/gundam.png", ebiten.FilterDefault)
-	if err != nil {
-		log.Fatal(err)
-	}
-	napalm, _, err = ebitenutil.NewImageFromFile("../assets/napalm.png", ebiten.FilterDefault)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	playerOne := player.New(gundam, screenWidth/2.0, screenHeight/2.0, 4)
+	//TODO Put object create calls in game?
+	villageOne := village.New(300, 500)
+	villages := append(villages, villageOne)
+	playerOne := player.New(screenWidth/2.0, screenHeight/2.0, 4)
 	players := append(players, playerOne)
-	bombOne := bomb.New(napalm, screenWidth, screenHeight)
+	bombOne := bomb.New(screenWidth, screenHeight)
 	bombs := append(bombs, bombOne)
-	game := game.New(players, bombs)
+
+	game := game.New(players, bombs, villages)
 
 	if err := ebiten.Run(game.Update, screenWidth, screenHeight, .5, "Hello world!"); err != nil {
 		log.Fatal(err)

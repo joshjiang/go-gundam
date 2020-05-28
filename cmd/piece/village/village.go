@@ -1,6 +1,10 @@
 package village
 
-import "github.com/hajimehoshi/ebiten"
+import (
+	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten/ebitenutil"
+	"log"
+)
 
 type Village struct {
 	xPos, yPos float64
@@ -8,11 +12,18 @@ type Village struct {
 	health     float64
 }
 
-func New(image *ebiten.Image, xPos, yPos float64) *Village{
+func New(xpos, ypos float64) *Village{
+	var house *ebiten.Image
+	var err error
+
+	house, _, err = ebitenutil.NewImageFromFile("../assets/village.png", ebiten.FilterDefault)
+	if err != nil {
+		log.Fatal(err)
+	}
 	return &Village{
-		xPos:   500,
-		yPos:   500,
-		image:  nil,
+		xPos:   xpos,
+		yPos:   ypos,
+		image:  house,
 		health: 100,
 	}
 }
@@ -26,3 +37,5 @@ func (v *Village) Draw() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	villageOp.GeoM.Translate(v.GetPos())
 	return v.image, villageOp
 }
+
+

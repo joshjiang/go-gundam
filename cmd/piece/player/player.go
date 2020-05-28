@@ -2,6 +2,8 @@ package player
 
 import (
 	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten/ebitenutil"
+	"log"
 )
 
 // Player ...
@@ -12,9 +14,16 @@ type Player struct {
 }
 
 // New ...
-func New(spriteImage *ebiten.Image, xpos, ypos, speed float64) *Player {
+func New(xpos, ypos, speed float64) *Player {
+	var gundam *ebiten.Image
+	var err error
+	gundam, _, err = ebitenutil.NewImageFromFile("../assets/gundam.png", ebiten.FilterDefault)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	return &Player{
-		image: spriteImage,
+		image: gundam,
 		xPos:  xpos,
 		yPos:  ypos,
 		speed: speed,
@@ -43,6 +52,10 @@ func (p *Player) GetPos() (float64, float64) {
 
 func (p *Player) GetImage() *ebiten.Image {
 	return p.image
+}
+
+func (p *Player) setImage() {
+
 }
 
 func (p *Player) Draw() (*ebiten.Image, *ebiten.DrawImageOptions) {

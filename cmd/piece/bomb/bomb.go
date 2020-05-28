@@ -2,6 +2,8 @@ package bomb
 
 import (
 	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten/ebitenutil"
+	"log"
 	"math/rand"
 	"time"
 )
@@ -13,10 +15,16 @@ type Bomb struct {
 	isPickedUp bool
 }
 
-func New(spriteImage *ebiten.Image, screenWidth, screenHeight float64) *Bomb {
+func New(screenWidth, screenHeight float64) *Bomb {
+	var napalm *ebiten.Image
+
+	napalm, _, err = ebitenutil.NewImageFromFile("../assets/napalm.png", ebiten.FilterDefault)
+	if err != nil {
+		log.Fatal(err)
+	}
 	rand.Seed(time.Now().UnixNano())
 	return &Bomb{
-		image:      spriteImage,
+		image:      napalm,
 		xPos:       rand.Float64() * screenWidth,
 		yPos:       rand.Float64() * screenHeight,
 		isPickedUp: false,
