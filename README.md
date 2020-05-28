@@ -2,7 +2,7 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/joshjiang/go-gundam)](https://goreportcard.com/report/github.com/joshjiang/go-gundam)
 
-This is a project to build a 2D game in golang inspired by [G Gundam](https://en.wikipedia.org/wiki/Mobile_Fighter_G_Gundam), [Killing Hope](https://en.wikipedia.org/wiki/Killing_Hope), [Pokémon](https://en.wikipedia.org/wiki/Pok%C3%A9mon_(video_game_series)) and [Bomb the Right Place](https://everydayarcade.com/games/bomb-the-right-place).
+This is a project to build a 2D game in golang with [ebiten](https://github.com/hajimehoshi/ebiten) inspired by [G Gundam](https://en.wikipedia.org/wiki/Mobile_Fighter_G_Gundam), [Killing Hope](https://en.wikipedia.org/wiki/Killing_Hope), [Pokémon](https://en.wikipedia.org/wiki/Pok%C3%A9mon_(video_game_series)) and [Bomb the Right Place](https://everydayarcade.com/games/bomb-the-right-place).
 
 ## Running game locally
 1. ```git clone https://github.com/joshjiang/go-gundam.git && cd go-gundam && go run cmd/main.go```
