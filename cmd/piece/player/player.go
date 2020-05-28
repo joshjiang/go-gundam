@@ -15,9 +15,7 @@ type Player struct {
 
 // New ...
 func New(xpos, ypos, speed float64) *Player {
-	var gundam *ebiten.Image
-	var err error
-	gundam, _, err = ebitenutil.NewImageFromFile("../assets/gundam.png", ebiten.FilterDefault)
+	gundam, _, err := ebitenutil.NewImageFromFile("../assets/gundam.png", ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}

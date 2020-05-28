@@ -13,10 +13,7 @@ type Village struct {
 }
 
 func New(xpos, ypos float64) *Village{
-	var house *ebiten.Image
-	var err error
-
-	house, _, err = ebitenutil.NewImageFromFile("../assets/village.png", ebiten.FilterDefault)
+	house, _, err := ebitenutil.NewImageFromFile("../assets/village.png", ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -37,5 +34,3 @@ func (v *Village) Draw() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	villageOp.GeoM.Translate(v.GetPos())
 	return v.image, villageOp
 }
-
-

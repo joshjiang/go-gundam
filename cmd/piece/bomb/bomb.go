@@ -16,9 +16,7 @@ type Bomb struct {
 }
 
 func New(screenWidth, screenHeight float64) *Bomb {
-	var napalm *ebiten.Image
-
-	napalm, _, err = ebitenutil.NewImageFromFile("../assets/napalm.png", ebiten.FilterDefault)
+	napalm, _, err := ebitenutil.NewImageFromFile("../assets/napalm.png", ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
