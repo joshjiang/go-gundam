@@ -21,6 +21,7 @@ nice to have:
 
 - ~~How do I make an interface for Bomb, Player, etc. as Pieces? They reuse some functions like draw, getpos, (java extends, implements)~~
 - ~~What do I use an interface for?~~
+- How do I write documentation for functions, classes, etc.?
 
 ## Features
 
