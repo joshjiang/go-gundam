@@ -23,7 +23,7 @@ var (
 
 func main() {
 	//TODO Put object create calls in game?
-	villageOne := village.New(300, 500)
+	villageOne := village.New(600, 1000)
 	villages := append(villages, villageOne)
 	playerOne := player.New(screenWidth/2.0, screenHeight/2.0, 4)
 	players := append(players, playerOne)
