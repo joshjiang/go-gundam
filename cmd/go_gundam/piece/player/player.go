@@ -1,17 +1,20 @@
 package player
 
 import (
-	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
+	"github.com/joshjiang/go-gundam/cmd/go_gundam/piece/village"
+	"github.com/joshjiang/go-gundam/cmd/go_gundam/util"
 	"log"
+	"math"
 )
 
 // Player ...
 type Player struct {
-	currentImage, imageDown, imageUp, imageLeft, imageRight, imageUpLeft, imageUpRight, imageDownLeft, imageDownRight *ebiten.Image
-	xPos, yPos                                                                                                        float64
-	speed                                                                                                             float64
+	currentImage, imageDown, imageUp, imageLeft, imageRight,
+	imageUpLeft, imageUpRight, imageDownLeft, imageDownRight, battleImage *ebiten.Image
+	xPos, yPos float64
+	speed      float64
 }
 
 // New ...
@@ -48,6 +51,10 @@ func New(xpos, ypos, speed float64) *Player {
 	if err != nil {
 		log.Fatal(err)
 	}
+	battleImage, _, err := ebitenutil.NewImageFromFile("../assets/gundam/battle-gundam.png", ebiten.FilterDefault)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return &Player{
 		imageDown:      down,
@@ -59,6 +66,7 @@ func New(xpos, ypos, speed float64) *Player {
 		imageDownLeft:  downLeft,
 		imageDownRight: downRight,
 		currentImage:   down,
+		battleImage:	battleImage,
 		xPos:           xpos,
 		yPos:           ypos,
 		speed:          speed,
@@ -99,22 +107,38 @@ func (p *Player) Move() {
 	}
 }
 
+func (p *Player) Fight(v *village.Village) {
+	//	TODO new fight scene transition with village and player
+}
+
 func (p *Player) GetPos() (float64, float64) {
 	return p.xPos, p.yPos
 }
 
-func (p *Player) GetImage() *ebiten.Image {
-	return p.currentImage
+func (p *Player) IsFighting(v *village.Village) bool {
+	// if players position +bounds overlap with the village, then return true, else return false
+	playerX, playerY := p.GetPos()
+	villageX, villageY := v.GetPos()
+	if math.Abs(playerX-villageX) < 10 && math.Abs(playerY-villageY) < 10 {
+		return true
+	}
+
+	return false
 }
 
 func (p *Player) setImage(image *ebiten.Image) {
 	p.currentImage = image
 }
 
-func (p *Player) Draw() (*ebiten.Image, *ebiten.DrawImageOptions) {
+func (p *Player) DrawMap() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	playerOp := &ebiten.DrawImageOptions{}
 	playerOp.GeoM.Scale(0.5, 0.5)
 	playerOp.GeoM.Translate(p.GetPos())
-	fmt.Println(p.GetImage().Bounds())
-	return p.GetImage(), playerOp
+	return p.currentImage, playerOp
+}
+
+func (p *Player) DrawBattle() (*ebiten.Image, *ebiten.DrawImageOptions) {
+	playerOp := &ebiten.DrawImageOptions{}
+	playerOp.GeoM.Translate(util.ScreenHeight-100, 100)
+	return p.battleImage, playerOp
 }

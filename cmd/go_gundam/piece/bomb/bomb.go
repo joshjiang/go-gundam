@@ -37,7 +37,14 @@ func (b *Bomb) GetPos() (float64, float64) {
 	return b.xPos, b.yPos
 }
 
-func (b *Bomb) Draw() (*ebiten.Image, *ebiten.DrawImageOptions) {
+func (b *Bomb) DrawMap() (*ebiten.Image, *ebiten.DrawImageOptions) {
+	bombOp := &ebiten.DrawImageOptions{}
+	bombOp.GeoM.Scale(0.2, 0.2)
+	bombOp.GeoM.Translate(b.GetPos())
+	return b.image, bombOp
+}
+
+func (b *Bomb) DrawBattle() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	bombOp := &ebiten.DrawImageOptions{}
 	bombOp.GeoM.Scale(0.2, 0.2)
 	bombOp.GeoM.Translate(b.GetPos())

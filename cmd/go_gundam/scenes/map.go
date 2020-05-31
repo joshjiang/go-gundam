@@ -1,7 +1,6 @@
 package scenes
 
 import (
-	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 	b "github.com/joshjiang/go-gundam/cmd/go_gundam/piece/bomb"
@@ -26,7 +25,6 @@ type MapScene struct {
 }
 
 func NewMapScene() *MapScene {
-	fmt.Println("this is getting called")
 	var err error
 
 	background, _, err := ebitenutil.NewImageFromFile("../assets/korea.png", ebiten.FilterDefault)
@@ -53,12 +51,18 @@ func (m *MapScene) Draw(screen *ebiten.Image) {
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Translate(0, 0)
 	screen.DrawImage(m.backgroundImage, op)
-	screen.DrawImage(m.Bombs[0].Draw())
-	screen.DrawImage(m.Villages[0].Draw())
-	screen.DrawImage(m.Player.Draw())
+	screen.DrawImage(m.Bombs[0].DrawMap())
+	screen.DrawImage(m.Villages[0].DrawMap())
+	screen.DrawImage(m.Player.DrawMap())
 }
 
 func (m *MapScene) Update(state *u.GameState) error {
 	m.Player.Move()
+	if m.Player.IsFighting(m.Villages[0]) {
+		//give player each piece an isBattling option
+		state.SceneManager.GoTo(NewBattleScene(m.Player, m.Villages[0]))
+
+		//TODO transition to battle scene
+	}
 	return nil
 }
