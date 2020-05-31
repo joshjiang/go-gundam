@@ -6,3 +6,9 @@ This is a project to build a 2D game in golang with [ebiten](https://github.com/
 
 ## Running game locally
 1. ```git clone https://github.com/joshjiang/go-gundam.git && cd go-gundam && go run cmd/main.go```
+
+## Resources
+
+### Sprites 
+ - Gundam: https://drive.google.com/drive/folders/1RrBeR09VKwdHJNFwGVtNcDcotBgvzMSP
+ - Pokemon: https://www.spriters-resource.com/ds_dsi/pokemondiamondpearl/sheet/20102/
