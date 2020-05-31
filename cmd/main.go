@@ -11,7 +11,7 @@ func main() {
 	game := &g.Game{}
 	update := game.Update
 
-	if err := ebiten.Run(update, u.ScreenWidth, u.ScreenHeight, .5, "Hello world!"); err != nil {
+	if err := ebiten.Run(update, u.ScreenWidth, u.ScreenHeight, 1, "Hello world!"); err != nil {
 		log.Fatal(err)
 	}
 }

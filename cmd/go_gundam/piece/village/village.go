@@ -34,8 +34,8 @@ func (v *Village) GetPos() (float64, float64) {
 
 func (v *Village) DrawMap() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	villageOp := &ebiten.DrawImageOptions{}
+	villageOp.GeoM.Scale(0.25, 0.25)
 	villageOp.GeoM.Translate(v.GetPos())
-	villageOp.GeoM.Scale(0.5, 0.5)
 	return v.image, villageOp
 }
 

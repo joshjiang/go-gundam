@@ -1,6 +1,7 @@
 package scenes
 
 import (
+	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 	b "github.com/joshjiang/go-gundam/cmd/go_gundam/piece/bomb"
@@ -32,7 +33,7 @@ func NewMapScene() *MapScene {
 		log.Fatal(err)
 	}
 
-	villageOne := v.New(600, 1000)
+	villageOne := v.New(300, 500)
 	villages := append(villages, villageOne)
 	playerOne := p.New(u.ScreenWidth/2.0, u.ScreenHeight/2.0, 4)
 	player := playerOne
@@ -50,6 +51,7 @@ func NewMapScene() *MapScene {
 func (m *MapScene) Draw(screen *ebiten.Image) {
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Translate(0, 0)
+	op.GeoM.Scale(.5,.5)
 	screen.DrawImage(m.backgroundImage, op)
 	screen.DrawImage(m.Bombs[0].DrawMap())
 	screen.DrawImage(m.Villages[0].DrawMap())
@@ -58,6 +60,8 @@ func (m *MapScene) Draw(screen *ebiten.Image) {
 
 func (m *MapScene) Update(state *u.GameState) error {
 	m.Player.Move()
+	fmt.Println(m.Villages[0].GetPos())
+	fmt.Println(m.Player.GetPos())
 	if m.Player.IsFighting(m.Villages[0]) {
 		//give player each piece an isBattling option
 		state.SceneManager.GoTo(NewBattleScene(m.Player, m.Villages[0]))

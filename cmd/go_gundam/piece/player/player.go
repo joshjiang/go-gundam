@@ -1,10 +1,11 @@
 package player
 
 import (
+	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
+	"github.com/joshjiang/go-gundam/cmd/go_gundam/piece"
 	"github.com/joshjiang/go-gundam/cmd/go_gundam/piece/village"
-	"github.com/joshjiang/go-gundam/cmd/go_gundam/util"
 	"log"
 	"math"
 )
@@ -115,14 +116,14 @@ func (p *Player) GetPos() (float64, float64) {
 	return p.xPos, p.yPos
 }
 
-func (p *Player) IsFighting(v *village.Village) bool {
+func (p *Player) IsFighting(pi piece.Piece) bool {
 	// if players position +bounds overlap with the village, then return true, else return false
 	playerX, playerY := p.GetPos()
-	villageX, villageY := v.GetPos()
+	villageX, villageY := pi.GetPos()
 	if math.Abs(playerX-villageX) < 10 && math.Abs(playerY-villageY) < 10 {
+		fmt.Println("yes fighting")
 		return true
 	}
-
 	return false
 }
 
@@ -132,13 +133,14 @@ func (p *Player) setImage(image *ebiten.Image) {
 
 func (p *Player) DrawMap() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	playerOp := &ebiten.DrawImageOptions{}
-	playerOp.GeoM.Scale(0.5, 0.5)
+	playerOp.GeoM.Scale(0.25, 0.25)
 	playerOp.GeoM.Translate(p.GetPos())
 	return p.currentImage, playerOp
 }
 
 func (p *Player) DrawBattle() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	playerOp := &ebiten.DrawImageOptions{}
-	playerOp.GeoM.Translate(util.ScreenHeight-100, 100)
+	playerOp.GeoM.Scale(2,2)
+	playerOp.GeoM.Translate(30, 190)
 	return p.battleImage, playerOp
 }
