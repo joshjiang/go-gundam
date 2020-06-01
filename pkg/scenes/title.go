@@ -4,7 +4,7 @@ import (
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/inpututil"
 	"github.com/hajimehoshi/ebiten/text"
-	"github.com/joshjiang/go-gundam/cmd/go_gundam/util"
+	"github.com/joshjiang/go-gundam/pkg/util"
 	"image/color"
 )
 

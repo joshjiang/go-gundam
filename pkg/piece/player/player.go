@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
-	"github.com/joshjiang/go-gundam/cmd/go_gundam/piece"
-	"github.com/joshjiang/go-gundam/cmd/go_gundam/piece/village"
+	"github.com/joshjiang/go-gundam/pkg/piece"
+	"github.com/joshjiang/go-gundam/pkg/piece/village"
 	"log"
 	"math"
 )

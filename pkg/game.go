@@ -1,9 +1,9 @@
-package go_gundam
+package pkg
 
 import (
 	"github.com/hajimehoshi/ebiten"
-	"github.com/joshjiang/go-gundam/cmd/go_gundam/scenes"
-	"github.com/joshjiang/go-gundam/cmd/go_gundam/util"
+	"github.com/joshjiang/go-gundam/pkg/scenes"
+	"github.com/joshjiang/go-gundam/pkg/util"
 )
 
 type Game struct {

@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
-	b "github.com/joshjiang/go-gundam/cmd/go_gundam/piece/bomb"
-	p "github.com/joshjiang/go-gundam/cmd/go_gundam/piece/player"
-	v "github.com/joshjiang/go-gundam/cmd/go_gundam/piece/village"
-	u "github.com/joshjiang/go-gundam/cmd/go_gundam/util"
+	b "github.com/joshjiang/go-gundam/pkg/piece/bomb"
+	p "github.com/joshjiang/go-gundam/pkg/piece/player"
+	v "github.com/joshjiang/go-gundam/pkg/piece/village"
+	u "github.com/joshjiang/go-gundam/pkg/util"
 
 	"log"
 )

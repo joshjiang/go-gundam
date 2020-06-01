@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
-	"github.com/joshjiang/go-gundam/cmd/go_gundam/piece"
-	p "github.com/joshjiang/go-gundam/cmd/go_gundam/piece/player"
-	u "github.com/joshjiang/go-gundam/cmd/go_gundam/util"
+	"github.com/joshjiang/go-gundam/pkg/piece"
+	p "github.com/joshjiang/go-gundam/pkg/piece/player"
+	u "github.com/joshjiang/go-gundam/pkg/util"
 	"log"
 )
 

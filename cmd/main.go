@@ -2,13 +2,13 @@ package main
 
 import (
 	"github.com/hajimehoshi/ebiten"
-	g "github.com/joshjiang/go-gundam/cmd/go_gundam"
-	u "github.com/joshjiang/go-gundam/cmd/go_gundam/util"
+	"github.com/joshjiang/go-gundam/pkg"
+	u "github.com/joshjiang/go-gundam/pkg/util"
 	"log"
 )
 
 func main() {
-	game := &g.Game{}
+	game := &pkg.Game{}
 	update := game.Update
 
 	if err := ebiten.Run(update, u.ScreenWidth, u.ScreenHeight, 1, "Hello world!"); err != nil {
