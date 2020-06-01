@@ -39,7 +39,7 @@ func (b *Bomb) GetPos() (float64, float64) {
 
 func (b *Bomb) DrawMap() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	bombOp := &ebiten.DrawImageOptions{}
-	bombOp.GeoM.Scale(0.2, 0.2)
+	bombOp.GeoM.Scale(0.1, 0.1)
 	bombOp.GeoM.Translate(b.GetPos())
 	return b.image, bombOp
 }

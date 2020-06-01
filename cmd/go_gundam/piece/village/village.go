@@ -8,23 +8,24 @@ import (
 )
 
 type Village struct {
-	xPos, yPos float64
-	image, battleImage      *ebiten.Image
-	health     float64
+	xPos, yPos         float64
+	image, battleImage *ebiten.Image
+	health             float64
+	name               string
 }
 
-func New(xpos, ypos float64) *Village{
+func New(xpos, ypos float64) *Village {
 	house, _, err := ebitenutil.NewImageFromFile("../assets/village.png", ebiten.FilterDefault)
 	if err != nil {
 		log.Fatal(err)
 	}
 	return &Village{
-		xPos:   xpos,
-		yPos:   ypos,
-		image:  house,
+		xPos:  xpos,
+		yPos:  ypos,
+		image: house,
 		//TODO Update village battle image
 		battleImage: house,
-		health: 100,
+		health:      100,
 	}
 }
 

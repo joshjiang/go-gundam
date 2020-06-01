@@ -26,9 +26,10 @@ nice to have:
 ## Features
 
  1. Fight Village
-  - Touch village switches to new pokemon fight scene 
+  - [x] Touch village switches to new pokemon fight scene 
   - Fight Scene includes 
-   - fight, run (raytheon wouldn't like that), negotiate (that's unamerican), etc.
-   - gundam and village both have health
+   - [ ] Dialog box fight, run (raytheon wouldn't like that), negotiate (that's unamerican), etc.
+   - [ ] gundam and village both have health 
+   - [ ] gundam and village can attack
    - village has no fight options its a village lmao
   - Exit fight scene

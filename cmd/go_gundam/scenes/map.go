@@ -51,7 +51,7 @@ func NewMapScene() *MapScene {
 func (m *MapScene) Draw(screen *ebiten.Image) {
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Translate(0, 0)
-	op.GeoM.Scale(.5,.5)
+	op.GeoM.Scale(.5, .5)
 	screen.DrawImage(m.backgroundImage, op)
 	screen.DrawImage(m.Bombs[0].DrawMap())
 	screen.DrawImage(m.Villages[0].DrawMap())

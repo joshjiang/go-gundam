@@ -1,6 +1,7 @@
 package scenes
 
 import (
+	"fmt"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 	"github.com/joshjiang/go-gundam/cmd/go_gundam/piece"
@@ -42,6 +43,7 @@ func (b *BattleScene) Draw(screen *ebiten.Image) {
 	if err := screen.DrawImage(b.background, op); err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(b.background.Bounds().Max.Y)
 	if err := screen.DrawImage(b.battleCircles, op); err != nil {
 		log.Fatal(err)
 	}
@@ -51,6 +53,10 @@ func (b *BattleScene) Draw(screen *ebiten.Image) {
 	if err := screen.DrawImage(b.player.DrawBattle()); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func (b *BattleScene) drawDialog(screen *ebiten.Image) {
+	// 	piecename wants to battle
 }
 
 func (b *BattleScene) Update(state *u.GameState) error {

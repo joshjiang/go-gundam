@@ -14,6 +14,7 @@ import (
 type Player struct {
 	currentImage, imageDown, imageUp, imageLeft, imageRight,
 	imageUpLeft, imageUpRight, imageDownLeft, imageDownRight, battleImage *ebiten.Image
+	health     int
 	xPos, yPos float64
 	speed      float64
 }
@@ -67,7 +68,7 @@ func New(xpos, ypos, speed float64) *Player {
 		imageDownLeft:  downLeft,
 		imageDownRight: downRight,
 		currentImage:   down,
-		battleImage:	battleImage,
+		battleImage:    battleImage,
 		xPos:           xpos,
 		yPos:           ypos,
 		speed:          speed,
@@ -110,6 +111,8 @@ func (p *Player) Move() {
 
 func (p *Player) Fight(v *village.Village) {
 	//	TODO new fight scene transition with village and player
+	// Pick from some set of options to launch a move. These go in a fight-options file
+	// Fight, Run, Negotiate Peace
 }
 
 func (p *Player) GetPos() (float64, float64) {
@@ -140,7 +143,7 @@ func (p *Player) DrawMap() (*ebiten.Image, *ebiten.DrawImageOptions) {
 
 func (p *Player) DrawBattle() (*ebiten.Image, *ebiten.DrawImageOptions) {
 	playerOp := &ebiten.DrawImageOptions{}
-	playerOp.GeoM.Scale(2,2)
+	playerOp.GeoM.Scale(2, 2)
 	playerOp.GeoM.Translate(30, 190)
 	return p.battleImage, playerOp
 }

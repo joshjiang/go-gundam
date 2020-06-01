@@ -10,5 +10,9 @@ This is a project to build a 2D game in golang with [ebiten](https://github.com/
 ## Resources
 
 ### Sprites 
- - Gundam: https://drive.google.com/drive/folders/1RrBeR09VKwdHJNFwGVtNcDcotBgvzMSP
- - Pokemon: https://www.spriters-resource.com/ds_dsi/pokemondiamondpearl/sheet/20102/
+ - Gundam 
+  - https://drive.google.com/drive/folders/1RrBeR09VKwdHJNFwGVtNcDcotBgvzMSP
+ - Pokemon
+  - https://www.spriters-resource.com/ds_dsi/pokemondiamondpearl/sheet/20102/ 
+  - https://www.spriters-resource.com/ds_dsi/pokemondiamondpearl/sheet/6969/
+ 
